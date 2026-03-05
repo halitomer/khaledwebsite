@@ -1,0 +1,19 @@
+{
+  "HTML Page Full Template": {
+    "scope": "html",
+    "prefix": "page",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html>",
+      "<head>",
+      "    <title>${1:khaled khaled Page}</title>",
+      "</head>",
+      "<body>",
+      "    <h1>${2:Hello Khaled 👋}</h1>",
+      "    $0",
+      "</body>",
+      "</html>"
+    ],
+    "description": "قالب صفحة HTML كامل"
+  }
+}
