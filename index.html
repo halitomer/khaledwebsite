@@ -101,6 +101,56 @@
         .two-col .card { margin-bottom: 0; }
         @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
 
+        .welcome-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #020617 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 200;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .welcome-title {
+            font-size: 2rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .welcome-sub {
+            color: #94a3b8;
+            margin-bottom: 28px;
+        }
+        .welcome-btn {
+            padding: 12px 28px;
+            border-radius: 999px;
+            border: none;
+            background: #22c55e;
+            color: #020617;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 14px 40px rgba(34, 197, 94, 0.4);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        }
+        .welcome-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 50px rgba(34, 197, 94, 0.55);
+            background: #16a34a;
+        }
+        .welcome-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+        }
+        @keyframes fadeOutOverlay {
+            to { opacity: 0; visibility: hidden; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .footer {
             text-align: center;
             padding: 32px 24px;
@@ -120,6 +170,12 @@
     </style>
 </head>
 <body>
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <h1 class="welcome-title">WELCOME TO MY WEBSITE</h1>
+        <p class="welcome-sub">Flutter developer | Mobile & Web</p>
+        <button class="welcome-btn" onclick="enterSite()">Enter</button>
+    </div>
+
     <nav class="nav-bar">
         <a href="#summary">Summary</a>
         <a href="#experience">Experience</a>
@@ -203,29 +259,23 @@
 
         <section class="card" id="contact">
             <h2>Contact</h2>
-            <p>Phone: 05054923980</p>
             <p>Email: <a class="link" href="mailto:khaledomrkhaled@Gmail.com">khaledomrkhaled@Gmail.com</a></p>
             <p>Address: Düzce, Türkiye</p>
             <p><a class="link" href="https://www.linkedin.com/in/khaled-khaled-27577915a/" target="_blank">LinkedIn profile</a></p>
         </section>
 
-        <section class="card">
-            <h2>References</h2>
-            <div class="ref-block">
-                <span class="ref-name">Saed Khaled</span><br>
-                Team lead – Solidtekno<br>
-                +90 505 0580 414 · <a class="link" href="mailto:saedkhaled96@gmail.com">saedkhaled96@gmail.com</a>
-            </div>
-            <div class="ref-block">
-                <span class="ref-name">Muhammet Özen</span><br>
-                SEO – Solidtekno<br>
-                +90 535 447 4823 · <a class="link" href="mailto:muhammed_ozenn@hotmail.com">muhammed_ozenn@hotmail.com</a>
-            </div>
-        </section>
     </main>
 
     <footer class="footer">
         <a href="https://www.linkedin.com/in/khaled-khaled-27577915a/" target="_blank">Connect on LinkedIn</a>
     </footer>
+
+    <script>
+        function enterSite() {
+            const overlay = document.getElementById('welcomeOverlay');
+            if (!overlay) return;
+            overlay.style.animation = 'fadeOutOverlay 0.4s ease forwards';
+        }
+    </script>
 </body>
 </html>
